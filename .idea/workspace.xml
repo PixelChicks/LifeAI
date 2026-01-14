@@ -5,7 +5,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06069905-8709-46fe-a36d-6df9178320a9" name="Changes" comment="get completed and correct response from AI">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/MailConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/SimpleDecryptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/WebClientConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/rateLimiting/RateLimiterConfigProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/rateLimiting/Resilience4jConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/enums/ExceptionSeverity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/enums/Permission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/enums/Provider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/enums/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/enums/TokenType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/email/EmailNotVerified.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/token/ExpiredTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/token/InvalidTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/user/UserCreateException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/user/UserLoginException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/user/UserNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/user/UserValidationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/filters/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/handlers/CustomExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/handlers/JwtAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/handlers/LogoutHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/Exception.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/Token.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/VerificationToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/baseEntity/BaseEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/auth/AccessTokenBodyDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/auth/AdminUserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/auth/AuthenticationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/auth/AuthenticationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/auth/OAuth2UserInfoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/auth/PublicUserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/auth/RefreshTokenBodyDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/auth/RegisterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/dto/common/BaseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/model/response/ExceptionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/respository/TokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/respository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/respository/VerificationTokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/AuthenticationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/ExceptionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/OAuth2AuthenticationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/TokenService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/impl/ExceptionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/security/AuthenticationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/security/JwtServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/security/OAuth2AuthenticationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/security/PasswordResetListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/security/RegistrationListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/security/TokenServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/security/events/OnPasswordResetRequestEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/services/security/events/OnRegistrationCompleteEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/utils/ApiExceptionParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/utils/CookieHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/utils/ObjectMapperHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/utils/PasswordEncryptionUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/rate-limiter.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/FrontendConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/config/FrontendConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/AccessDeniedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/AccessDeniedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/BadRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/BadRequestException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/InternalServerErrorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/InternalServerErrorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/NoSuchElementException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/NoSuchElementException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/TooManyRequestsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/lifeAI/LifeAI/exceptions/common/TooManyRequestsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +105,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/BelisAliosmanova/LifeAI.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/PixelChicks/LifeAI.git&quot;,
     &quot;accountId&quot;: &quot;a9e64eaa-e818-4106-8acd-7f56e3dadcf0&quot;
   }
 }</component>
@@ -64,19 +134,19 @@
     &quot;Maven.LifeAI [clean,test,install].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;crawlers&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/LifeAI/server/src/main/java/com/lifeAI/LifeAI/config&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/LIFE/LifeAI/server/src/main/resources&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\Desktop\LifeAI\server\src\main\java\com\lifeAI\LifeAI\config" />
-      <recent name="C:\Users\Lenovo\Desktop\LifeAI\server\src\main\resources\messages" />
-      <recent name="C:\Users\Lenovo\Desktop\LifeAI\server\src\main\java\com\lifeAI\LifeAI\exceptions\common" />
-      <recent name="C:\Users\Lenovo\Desktop\LifeAI\server\src\main\java\com\lifeAI\LifeAI\exceptions" />
-      <recent name="C:\Users\Lenovo\Desktop\LifeAI\server\src\main\java\com\lifeAI\LifeAI\controllers" />
+      <recent name="C:\Users\Lenovo\Desktop\LIFE\LifeAI\server\src\main\resources" />
+      <recent name="C:\Users\Lenovo\Desktop\LIFE\LifeAI\server\src\main\java\com\lifeAI\LifeAI\exceptions\common" />
+      <recent name="C:\Users\Lenovo\Desktop\LIFE\LifeAI\server\src\main\java\com\lifeAI\LifeAI" />
+      <recent name="C:\Users\Lenovo\Desktop\LIFE\LifeAI\server\src\main\java\com\lifeAI\LifeAI\services" />
+      <recent name="C:\Users\Lenovo\Desktop\LIFE\LifeAI\server\src\main\java\com\lifeAI\LifeAI\exceptions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Lenovo\Desktop\LifeAI\server\src\main\resources\static\files" />
@@ -84,6 +154,10 @@
       <recent name="C:\Users\Lenovo\Desktop\LifeAI\server" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lifeAI.LifeAI.services" />
+      <recent name="com.lifeAI.LifeAI.model.response" />
+      <recent name="com.lifeAI.LifeAI.model.dto.responce" />
+      <recent name="com.lifeAI.LifeAI.model.baseEntity" />
       <recent name="com.lifeAI.LifeAI.utils" />
     </key>
   </component>
@@ -91,12 +165,26 @@
     <configuration name="LifeAiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="ASSISTANT_ID" value="asst_FqF4m6Ey4lpsFreuHgSRYLXt" />
+        <env name="BASEURL" value="http://localhost:8080" />
         <env name="DB_HOST" value="localhost" />
         <env name="DB_NAME" value="life" />
         <env name="DB_PASSWORD" value="root" />
         <env name="DB_PORT" value="5432" />
         <env name="DB_USER" value="postgres" />
+        <env name="FILE_ASSISTANT_ID" value="asst_vLNIhxSuoaaEZWuzTrRbvKgT" />
+        <env name="FRONTEND_URL" value="http://localhost:8081" />
+        <env name="GMAIL_PASSWORD" value="xgut tmzf kyrv igvp" />
+        <env name="GMAIL_USERNAME" value="benidebelis@gmail.com" />
+        <env name="GOOGLE_CLIENT_ID" value="166750785007-k778h1r3h0ec36t98ap5jan57uoigmc6.apps.googleusercontent.com" />
+        <env name="GOOGLE_CLIENT_SECRET" value="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" />
+        <env name="JWT_EXPIRATION" value="86400000" />
+        <env name="JWT_SECRET" value="404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970" />
+        <env name="MYSQL_URL" value="mysql://localhost:3306/life?createDatabaseIfNotExist=true" />
+        <env name="MYSQLPASSWORD" value="root" />
+        <env name="MYSQLUSER" value="root" />
         <env name="OPENAI_API_KEY" value="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" />
+        <env name="POSITIVE_ASSISTANT_ID" value="asst_vMJdRXvatEoVvE8xkZ53fxUz" />
+        <env name="REFRESH_TOKEN_EXPIRATION" value="604800000" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.lifeAI.LifeAI.LifeAiApplication" />
       <module name="LifeAI" />

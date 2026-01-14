@@ -3,12 +3,26 @@ package com.lifeAI.LifeAI.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.lifeAI.LifeAI.exceptions.user.UserNotFoundException;
+import com.lifeAI.LifeAI.model.baseEntity.BaseEntity;
+import com.lifeAI.LifeAI.model.dto.common.BaseDTO;
+import com.lifeAI.LifeAI.respository.UserRepository;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.context.MessageSource;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -18,13 +32,36 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @RequiredArgsConstructor
 @EnableAspectJAutoProxy
+@EnableAsync
 public class ApplicationConfig {
-
-    private final MessageSource messageSource;
+    private final UserRepository repository;
 
     @Bean
     public ModelMapper modelMapper() {
-        return new ModelMapper();
+        ModelMapper modelMapper = new ModelMapper();
+
+        modelMapper
+                .getConfiguration()
+                .setPropertyCondition(context -> {
+                    if (
+                            !(context.getParent().getDestination() instanceof BaseEntity &&
+                                    context.getParent().getSource() instanceof BaseDTO)
+                    ) {
+                        return true;
+                    }
+
+                    String destinationProperty = context.getMapping().getLastDestinationProperty().getName();
+
+                    return !("id".equals(destinationProperty) ||
+                            "createdAt".equals(destinationProperty) ||
+                            "updatedAt".equals(destinationProperty) ||
+                            "deletedAt".equals(destinationProperty));
+                })
+                .setFieldMatchingEnabled(true)
+                .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE)
+                .setMatchingStrategy(MatchingStrategies.STANDARD);
+
+        return modelMapper;
     }
 
     @Bean
@@ -38,10 +75,43 @@ public class ApplicationConfig {
         return objectMapper;
     }
 
+    @Bean
+    public Validator validator() {
+        Validator validator;
+
+        try (var factory = Validation.buildDefaultValidatorFactory()) {
+            validator = factory.getValidator();
+        }
+
+        return validator;
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return email -> repository.findByEmail(email)
+                .orElseThrow(UserNotFoundException::new);
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
 }

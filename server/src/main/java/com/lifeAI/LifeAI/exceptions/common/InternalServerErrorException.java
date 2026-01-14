@@ -1,7 +1,7 @@
 package com.lifeAI.LifeAI.exceptions.common;
 
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -9,12 +9,18 @@ import org.springframework.http.HttpStatus;
  * Extends ApiException and sets the appropriate message and HTTP status code.
  * Sets the appropriate message using MessageSource (the messages are in src/main/resources/messages).
  */
+@Getter
+@Setter
 public class InternalServerErrorException extends ApiException {
-    public InternalServerErrorException(MessageSource messageSource) {
-        super(messageSource.getMessage("internal.server.error", null, LocaleContextHolder.getLocale()), HttpStatus.INTERNAL_SERVER_ERROR);
+    private RuntimeException innerRuntimeException;
+
+    public InternalServerErrorException(RuntimeException runtimeException) {
+        super("Вътрешна грешка на сървъра!", HttpStatus.INTERNAL_SERVER_ERROR);
+        setInnerRuntimeException(runtimeException);
     }
 
     public InternalServerErrorException(String message) {
         super(message, HttpStatus.INTERNAL_SERVER_ERROR);
+        setInnerRuntimeException(new RuntimeException(message));
     }
 }

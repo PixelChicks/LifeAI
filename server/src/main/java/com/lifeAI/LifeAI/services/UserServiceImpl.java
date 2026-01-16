@@ -78,8 +78,8 @@ public class UserServiceImpl implements UserService {
         }
 
         if (currentUser.getRole().equals(Role.PATIENT)) {
-            userToUpdate.setFirstName(userDTO.getFirstname());
-            userToUpdate.setLastName(userDTO.getLastname());
+            userToUpdate.setFirstName(userDTO.getFirstName());
+            userToUpdate.setLastName(userDTO.getLastName());
         } else if (currentUser.getRole().equals(Role.ADMIN)) {
             // It is not null it is "" so don't change it
             if (userDTO.getPassword() == "") {

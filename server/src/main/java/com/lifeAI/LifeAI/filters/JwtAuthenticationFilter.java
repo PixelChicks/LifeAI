@@ -1,6 +1,7 @@
 package com.lifeAI.LifeAI.filters;
 
 import com.lifeAI.LifeAI.exceptions.user.UserNotFoundException;
+import com.lifeAI.LifeAI.model.User;
 import com.lifeAI.LifeAI.model.dto.auth.PublicUserDTO;
 import com.lifeAI.LifeAI.respository.TokenRepository;
 import com.lifeAI.LifeAI.services.JwtService;
@@ -110,11 +111,24 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
 
-            // Set user details in request attribute
-            request.setAttribute(USER_KEY, modelMapper.map(userDetails, PublicUserDTO.class));
+            request.setAttribute(USER_KEY, JwtAuthenticationFilter.safeMapUser(userDetails));
             request.setAttribute(JWT_KEY, jwt);
         }
 
         filterChain.doFilter(request, response);
     }
+
+    public static PublicUserDTO safeMapUser(UserDetails userDetails) {
+        if (userDetails instanceof User user) {
+            return PublicUserDTO.builder()
+                    .id(user.getId())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .email(user.getEmail())
+                    .role(user.getRole())
+                    .build();
+        }
+        return null;
+    }
+
 }

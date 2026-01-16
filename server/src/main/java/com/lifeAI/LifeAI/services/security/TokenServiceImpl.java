@@ -85,11 +85,18 @@ public class TokenServiceImpl implements TokenService {
         saveToken(user, jwtToken, TokenType.ACCESS);
         saveToken(user, refreshToken, TokenType.REFRESH);
 
-        return AuthenticationResponse
-                .builder()
+        PublicUserDTO dto = PublicUserDTO.builder()
+                .id(user.getId())
+                .firstName(user.getFirstName() != null ? user.getFirstName() : "")
+                .lastName(user.getLastName() != null ? user.getLastName() : "")
+                .email(user.getEmail() != null ? user.getEmail() : "")
+                .role(user.getRole() != null ? user.getRole() : "")
+                .build();
+
+        return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
-                .user(modelMapper.map(user, PublicUserDTO.class))
+                .user(dto)
                 .build();
     }
 

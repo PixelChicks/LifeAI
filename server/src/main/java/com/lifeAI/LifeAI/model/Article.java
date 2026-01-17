@@ -23,7 +23,7 @@ public class Article {
     @Column(name = "title", columnDefinition = "TEXT")
     private String title;
 
-    @Column(name = "description", columnDefinition = "TEXT")
+    @Column(name = "description", columnDefinition = "LONGTEXT")
     private String description;
 
     @Column(name = "thumbnail_picture")

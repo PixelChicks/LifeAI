@@ -1,6 +1,7 @@
 package com.lifeAI.LifeAI.controllers;
 
 import com.lifeAI.LifeAI.model.Article;
+import com.lifeAI.LifeAI.model.dto.common.ArticleCardDTO;
 import com.lifeAI.LifeAI.services.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,20 +15,23 @@ public class ArticleController {
 
     private final ArticleService articleService;
 
-    // Get all articles: /api/articles?page=0&size=10
     @GetMapping
-    public ResponseEntity<Page<Article>> getAll(
+    public ResponseEntity<Page<ArticleCardDTO>> getAll(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(articleService.getAllArticles(page, size));
     }
 
-    // Get by subcategory: /api/articles/subcategory/SomeCategory?page=0&size=10
     @GetMapping("/subcategory/{subCategory}")
-    public ResponseEntity<Page<Article>> getBySubCategory(
+    public ResponseEntity<Page<ArticleCardDTO>> getBySubCategory(
             @PathVariable String subCategory,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(articleService.getArticlesBySubCategory(subCategory, page, size));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Article> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(articleService.getArticleById(id));
     }
 }

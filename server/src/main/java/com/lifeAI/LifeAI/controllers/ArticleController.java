@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/articles")
 @RequiredArgsConstructor
@@ -34,4 +36,11 @@ public class ArticleController {
     public ResponseEntity<Article> getById(@PathVariable Long id) {
         return ResponseEntity.ok(articleService.getArticleById(id));
     }
+
+    @GetMapping("/random/no-subcategory")
+    public ResponseEntity<List<ArticleCardDTO>> getRandomNoSubCategory() {
+        List<ArticleCardDTO> randomArticles = articleService.getRandomArticlesWithNoSubCategory(3);
+        return ResponseEntity.ok(randomArticles);
+    }
+
 }

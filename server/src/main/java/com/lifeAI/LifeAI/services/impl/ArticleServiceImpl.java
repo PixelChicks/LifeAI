@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -34,4 +35,10 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Article with id " + id + " not found"));
     }
+
+    @Override
+    public List<ArticleCardDTO> getRandomArticlesWithNoSubCategory(int count) {
+        return articleRepository.findRandomArticlesWithNoSubCategory(Pageable.ofSize(count));
+    }
+
 }

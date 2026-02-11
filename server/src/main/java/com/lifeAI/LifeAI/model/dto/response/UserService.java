@@ -50,7 +50,7 @@ public class UserService {
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
+                .password(request.getPassword()) //already crypted from bbca db
                 .role(request.getRole().toUpperCase())
                 .encrypted(true)
                 .enabled(true)

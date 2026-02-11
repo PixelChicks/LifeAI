@@ -3,27 +3,39 @@ management:
     web:
       exposure:
         include: [ 'health', 'healthcheck', 'prometheus' ]
-      base-path: '/admin'
+      base-path: /admin
       path-mapping:
-        prometheus: '/metrics'
+        prometheus: /metrics
+
 server:
   port: 8080
+  frontend:
+    baseUrl: ${FRONTEND_URL}
+    loginUrl: ${server.frontend.baseUrl}/login
+    finishRegisterUrl: ${server.frontend.baseUrl}/finish-register
+    oauth2RedirectUrl: ${server.frontend.baseUrl}/process-oauth2
+    forgottenPasswordUrl: ${server.frontend.baseUrl}/forgotten-password
+  backend:
+    baseUrl: ${BACKEND_URL}
+
 spring:
-  application.name: plug-n-play
-  ai:
-    openai:
-      api-key: ${OPENAI_API_KEY}
-      assistant-id: ${ASSISTANT_ID}
-      positiveAssistant-id: ${POSITIVE_ASSISTANT_ID}
-      fileAssistant-id:  ${FILE_ASSISTANT_ID}
+  application:
+    name: plug-n-play
+
+  config:
+    import: "classpath:rate-limiter.yaml"
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
   datasource:
     url: jdbc:${MYSQL_URL}
     username: ${MYSQLUSER}
     password: ${MYSQLPASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
-  flyway:
-    enabled: true
-    validate-on-migrate: false
+
   jpa:
     generate-ddl: false
     hibernate:
@@ -31,9 +43,53 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+  flyway:
+    enabled: true
+    validate-on-migrate: false
+
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET}
+      expiration: ${JWT_EXPIRATION} # 1 day
+      refresh-token:
+        expiration: ${REFRESH_TOKEN_EXPIRATION} # 7 days
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: https://www.googleapis.com
+          client-id: ${GOOGLE_CLIENT_ID}
+          client-secret: ${GOOGLE_CLIENT_SECRET}
+
+    mail:
+      host: smtp.gmail.com
+      port: 465
+      protocol: smtps
+      username: ${GMAIL_USERNAME}
+      password: ${GMAIL_PASSWORD}
+      properties:
+        mail:
+          transport:
+            protocol: smtps
+          smtps:
+            auth: true
+            starttls:
+              enable: true
+            timeout: 8000
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      assistant-id: ${ASSISTANT_ID}
+      positiveAssistant-id: ${POSITIVE_ASSISTANT_ID}
+      fileAssistant-id: ${FILE_ASSISTANT_ID}
+
+application:
+  upload:
+    directory: server/src/main/resources/static/uploads/
+
 springdoc:
   api-docs:
     path: /apidoc
   swagger-ui:
     path: /swagger-ui/index.html
-

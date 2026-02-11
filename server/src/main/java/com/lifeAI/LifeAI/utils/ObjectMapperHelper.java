@@ -2,7 +2,7 @@ package com.lifeAI.LifeAI.utils;
 
 import com.lifeAI.LifeAI.exceptions.common.ApiException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lifeAI.LifeAI.model.response.ExceptionResponse;
+import com.lifeAI.LifeAI.model.dto.response.ExceptionResponse;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.MediaType;

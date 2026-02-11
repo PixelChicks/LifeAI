@@ -2,7 +2,7 @@ package com.lifeAI.LifeAI.handlers;
 
 import com.lifeAI.LifeAI.exceptions.common.*;
 import com.lifeAI.LifeAI.exceptions.user.UserLoginException;
-import com.lifeAI.LifeAI.model.response.ExceptionResponse;
+import com.lifeAI.LifeAI.model.dto.response.ExceptionResponse;
 import com.lifeAI.LifeAI.services.ExceptionService;
 import com.lifeAI.LifeAI.utils.ApiExceptionParser;
 import io.github.resilience4j.ratelimiter.RequestNotPermitted;

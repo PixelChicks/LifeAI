@@ -1,7 +1,7 @@
 package com.lifeAI.LifeAI.utils;
 
 import com.lifeAI.LifeAI.exceptions.common.ApiException;
-import com.lifeAI.LifeAI.model.response.ExceptionResponse;
+import com.lifeAI.LifeAI.model.dto.response.ExceptionResponse;
 
 import java.time.LocalDateTime;
 

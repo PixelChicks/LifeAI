@@ -1,4 +1,4 @@
-package com.lifeAI.LifeAI.model.response;
+package com.lifeAI.LifeAI.model.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
